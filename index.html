@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Catch Up Game</title>
+  </head>
+  <body>
+
+    
+    <div class="collapsed-sidebar">
+      <button class="show-options-icon">☰</button>
+      <button class="show-rules-icon">📜</button>
+      <button class="show-input-icon">🔢</button>
+    </div>
+    <div class="rules-modal hidden">
+      <button class="close-rules-modal">&times;</button>
+      <h1>The Rules</h1>
+      <p>
+        The Catch Up Game is a turn-based game for two players. Here are the rules:
+        <ul>
+          <li>The game starts with a selective amount of numbers displayed on the screen, but feel free to add or remove numbers with the options bar on the left</li>
+          <li>Players take turns selecting numbers.</li>
+          <li>The selected number is added to the player's score and removed from the choices. The middle box is a comparison box, it displays the difference of both players' scores</li>
+          <li>You can select multiple numbers on the same turn. Therefore take advantage of the comparison box because it will tell you how many points you can take on that single turn. </li>
+          <li>After choosing a number, if your score matches or exceeds your opponent's, it becomes their turn.</li>
+          <li>The game continues until no numbers remain in the field. The player with the highest score at the end wins.</li>
+          <li>If you encounter a interesting scenario, and want to go back, there is a "undo" button which only permitted if both players agree</li>
+          <br>
+        </ul>
+        Good luck and have fun! 🧡 <br>
+      </p>
+    </div>
+    
+    <div class="input-modal hidden">
+      <button class="close-input-modal">&times;</button>
+      <h1>Set Number Range</h1>
+      <form id="numberRangeForm">
+        <div class="input-box">
+          <label for="startNumber">Starting Number:</label>
+          <input type="number" id="startNumber" placeholder="Enter starting number" min="1" required>
+        </div>
+        <div class="input-box">
+          <label for="endNumber">Ending Number:</label>
+          <input type="number" id="endNumber" placeholder="Enter ending number" min="1" required>
+        </div>
+        <button type="submit" class="confirm-range">Confirm</button>
+      </form>
+    </div>
+
+    <!-- <div class="cases-modal hidden">
+      <button class="close-cases-modal">&times;</button>
+      <h1>Solved Cases</h1>
+      <p>If played optimally:</p>
+      <p>Note N is the set of number from {1, ..., N}. Additionally, the outcome is based on the Player 1's perspective</p>
+      <div class="cases-list">
+        <button class="case" data-case="1,3">N = 3 is a draw</button><br>
+        <button class="case" data-case="1,4">N = 4 is a draw</button><br>
+        <button class="case" data-case="1,5">N = 5 is a win</button><br>
+        <button class="case" data-case="1,6">N = 6 is a win</button><br>
+        <button class="case" data-case="1,7">N = 7 is a draw</button><br>
+        <button class="case" data-case="1,8">N = 8 is a draw</button><br>
+        <button class="case" data-case="1,9">N = 9 is a loss</button><br>
+        <button class="case" data-case="1,10">N = 10 is a loss</button><br>
+      </div>
+    </div> -->
+    
+    <div class="strategy-modal hidden">
+      <button class="close-strategy-modal">&times;</button>
+      <h1>Strategy</h1>
+    </div>
+    
+    
+    <div class="about-modal hidden">
+      <button class="close-about-modal">&times;</button>
+      <h1>About This Game</h1>
+      <p>
+        Game Title: The Catch Up Game <br>
+        Version: 3.14.15<br>
+        Release Date: Tomorrow<br>
+        Developer: Frank Feng<br>
+        Inspiration: Kenny Feng's research based on <a href="https://game.engineering.nyu.edu/wp-content/uploads/2015/10/catch-up-a-game-in-which-the-lead-alternates-2015.pdf"> Catch-Up: A Game in Which the Lead Alternates. </a>
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
+
+<div class="expanded-sidebar">
+  <div class="sidebar-header">
+    <h2>The Catch Up Game</h2>
+    <button class="close-sidebar">&times;</button>
+  </div>
+  <div class="sidebar-content">
+    <button class="show-rules-modal">📜 Rules</button>
+    <button class="show-input-modal">🔢 Set Numbers</button>
+    <!-- <button class="show-cases-modal">🔍 Solved / Special Cases</button> -->
+    <button class="show-strategy-modal">♞ Strategy</button>
+    <button class="show-about-modal">📋 About</button>
+  </div>
+</div>
+
+    <main class="main">
+      <section class="player player--0 player--active">
+        <h2 class="name" id="name--0">Player 1</h2>
+        <p class="score" id="score--0">0</p>
+        <!-- <div class="current">
+          <p class="current-label">Previous Number</p>
+          <p class="current-score" id="current--0">0</p>
+        </div> -->
+      </section>
+      <div class="comparison-box">
+        0
+      </div>
+      <div class="number-field">
+        
+      </div>
+      
+      <section class="player player--1">
+        <h2 class="name" id="name--1">Player 2</h2>
+        <p class="score" id="score--1">0</p>
+        <!-- <div class="current">
+          <p class="current-label">Previous Number</p>
+          <p class="current-score" id="current--1">0</p>
+        </div> -->
+      </section>   
+      <button class="btn btn--new">🔄 New game</button>
+      <button class="btn btn--undo">↩️ Undo</button>
+      <form id="player1Form">
+        <input class="input player--input1" placeholder="Player 1"></input>
+      </form>
+      <form id="player2Form">
+        <input class="input player--input2" placeholder="Player 2"></input>
+      </form>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
